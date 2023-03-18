@@ -44,6 +44,19 @@ const Menu = ({ isOpen, setIsOpen }) => {
     }
   };
 
+  const reExam = () => {
+    if (
+      window.confirm(
+        "다시 검사할 시 이전의 데이터들이 모두 지워집니다. 다시 검사하시겠습니까?"
+      )
+    ) {
+      alert("기존의 데이터들이 삭제되었습니다.");
+      localStorage.setItem("mbti", "");
+      navigate("/owner-question", { replace: true });
+    } else {
+      alert("취소합니다.");
+    }
+  };
   return (
     <div className="Menu">
       <div className="menu-box">
@@ -58,7 +71,9 @@ const Menu = ({ isOpen, setIsOpen }) => {
         </div>
         <div className="menuList m2">
           <MdOutlineReplay className="return" />
-          <p className="text">다시 검사하기</p>
+          <p className="text" onClick={reExam}>
+            다시 검사하기
+          </p>
         </div>
         <div className="menuList m3">
           <HiOutlineLink className="share" />

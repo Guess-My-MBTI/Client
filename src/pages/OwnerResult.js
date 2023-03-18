@@ -59,6 +59,14 @@ const OwnerResult = () => {
     }
   };
 
+  const goHome = () => {
+    if (mbti.length < 1) {
+      alert("잘못된 접근입니다. 다시 시작해 주십시오");
+      navigate("/", { replace: true });
+    } else {
+      navigate("/owner-main");
+    }
+  };
   return (
     <div className="OwnerResult">
       <div className="result">
@@ -89,12 +97,7 @@ const OwnerResult = () => {
             <MdOutlineReplay className="return" />
           </div>
           <div>
-            <AiFillHome
-              className="home"
-              onClick={() => {
-                navigate("/owner-main");
-              }}
-            />
+            <AiFillHome className="home" onClick={goHome} />
           </div>
           <div>
             <HiOutlineLink className="share" onClick={shareLink} />
