@@ -22,7 +22,7 @@ const LoginHandeler = (props) => {
         localStorage.setItem("name", res.data.account.kakaoName);
         localStorage.setItem("id", res.data.account.id);
         localStorage.setItem("mbti", res.data.account.mbti);
-        if (res.data.account.mbti.length > 0) {
+        if (res.data.account.mbti != null) {
           navigate("/owner-main");
         } else {
           navigate("/owner-question");

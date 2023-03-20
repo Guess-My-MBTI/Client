@@ -50,9 +50,19 @@ const Menu = ({ isOpen, setIsOpen }) => {
         "다시 검사할 시 이전의 데이터들이 모두 지워집니다. 다시 검사하시겠습니까?"
       )
     ) {
-      alert("기존의 데이터들이 삭제되었습니다.");
-      localStorage.setItem("mbti", "");
-      navigate("/owner-question", { replace: true });
+      axios({
+        method: "DELETE",
+        url: `${baseUrl}${ownerId}`,
+        headers: {
+          Authorization: "Bearer " + accessToken,
+          "Content-Type": "application/json;charset=utf-8",
+          "Access-Control-Allow-Origin": "*",
+        },
+      }).then((res) => {
+        alert("기존의 데이터들이 삭제되었습니다.");
+        localStorage.setItem("mbti", "");
+        navigate("/owner-question", { replace: true });
+      });
     } else {
       alert("취소합니다.");
     }
