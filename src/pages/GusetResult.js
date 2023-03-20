@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import React, { useRef, useState, useEffect } from "react";
 import ListName from "../components/ListName";
 import API from "../utils/API";
+import { FiMousePointer } from "react-icons/fi";
 
 const GuestResult = () => {
   const navigate = useNavigate();
@@ -24,9 +25,10 @@ const GuestResult = () => {
 
   // 중복 클릭 방지 (isLoding이 false면 disabled)
   const [isLoading, setIsLoading] = useState(false);
+  // send 여부 파악
+  const [isFinish, setIsFinish] = useState(false);
 
-  const goHome = () => navigate("/owner-main");
-  const share = () => alert("링크가 복사되었습니다!");
+  const [isClick, setIsClick] = useState(false);
 
   const calAcc = () => {
     let count = 0;
@@ -67,7 +69,10 @@ const GuestResult = () => {
         }
       })
       .catch((error) => console.log(error.res))
-      .finally(() => setIsLoading(false));
+      .finally(() => {
+        setIsLoading(false);
+        setIsFinish(true);
+      });
   };
 
   const handleChangeState = (e) => {
@@ -92,6 +97,14 @@ const GuestResult = () => {
     }
   };
 
+  const toggle = () => {
+    setIsClick(!isClick);
+  };
+
+  const goHome = () => {
+    navigate("/");
+  };
+
   return (
     <div className="GuestResult">
       <div className="answer">
@@ -105,9 +118,20 @@ const GuestResult = () => {
           <p className="t">T</p>
           <p className="i">I</p>
         </div>
+
+        {isFinish == true ? (
+          <div className="wrapper">
+            <FiMousePointer className="try" onClick={toggle} />
+          </div>
+        ) : null}
       </div>
 
       <div className="answerCard">
+        {isClick == true ? (
+          <div className="button-wrapper" onClick={goHome}>
+            <p className="text">나도 검사하기!</p>
+          </div>
+        ) : null}
         <div className="mbti">
           <p className="m">{mbti[0]}</p>
           <p className="b">{mbti[1]}</p>
