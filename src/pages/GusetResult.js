@@ -1,7 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import React, { useRef, useState, useEffect } from "react";
-import { AiFillHome } from "react-icons/ai";
-import { HiOutlineLink } from "react-icons/hi";
 import ListName from "../components/ListName";
 import API from "../utils/API";
 
@@ -65,7 +63,7 @@ const GuestResult = () => {
         if (res.status === 200) {
           console.log(res);
           alert("전달 완료!");
-          navigate("/");
+          setState({ comment: "" });
         }
       })
       .catch((error) => console.log(error.res))
@@ -171,22 +169,6 @@ const GuestResult = () => {
           >
             send
           </button>
-        </div>
-      </div>
-
-      <div className="button-wrapper">
-        <div className="text">
-          <div>홈으로</div>
-          <div>공유하기</div>
-        </div>
-
-        <div className="icons">
-          <div onClick={goHome}>
-            <AiFillHome className="Home" />
-          </div>
-          <div onClick={share}>
-            <HiOutlineLink className="Link" />
-          </div>
         </div>
       </div>
     </div>
