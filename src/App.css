@@ -1300,12 +1300,10 @@ body {
 /* 애니메이션 효과 (opacity: 투명도) */
 @keyframes graph {
   0% {
-    width: 0;
     opacity: 0;
     color: #f999a0;
   }
   100% {
-    width: 100%;
     opacity: 0.8;
   }
 }
@@ -1324,7 +1322,7 @@ body {
   border: 1px solid #282828;
   opacity: 0.8;
 
-  /* 애니메이션 graph를 3초동안 실행시킴 (한번만 실행)*/
+  /* 애니메이션 graph를 2초동안 실행시킴 (한번만 실행)*/
   animation: graph 2s 1;
 }
 
@@ -1437,42 +1435,6 @@ body {
   padding-top: 5px;
   font-family: "UhBeeSe_hyun";
   font-size: 14px;
-  cursor: pointer;
-}
-
-.GuestResult .button-wrapper {
-  display: grid;
-  text-align: center;
-  font-size: 25px;
-  color: white;
-  text-shadow: -1px 0 rgba(102, 102, 102, 1), 0 1px rgba(102, 102, 102, 1),
-    1px 0 rgba(102, 102, 102, 1), 0 -1px rgba(102, 102, 102, 1);
-  padding-top: 20px;
-}
-
-.GuestResult .text {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-.GuestResult .icons {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  font-size: 40px;
-  gap: 10px;
-}
-
-.GuestResult .Home {
-  background-color: rgba(249, 153, 160, 1);
-  border-radius: 50%;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  cursor: pointer;
-}
-.GuestResult .Link {
-  background-color: rgba(255, 232, 151, 1);
-  border-radius: 50%;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   cursor: pointer;
 }
 
