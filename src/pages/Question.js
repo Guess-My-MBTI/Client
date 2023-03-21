@@ -94,7 +94,7 @@ const Question = () => {
 
     console.log(guest_mbti);
     localStorage.setItem("guest_mbti", guest_mbti);
-    navigate("/guest-result");
+    navigate("/guest-result", { replace: true });
   };
 
   const decreaseQuestion = () => {

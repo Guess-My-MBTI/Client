@@ -2,7 +2,13 @@ import { useNavigate } from "react-router-dom";
 import React, { useRef, useState, useEffect } from "react";
 import ListName from "../components/ListName";
 import API from "../utils/API";
+
+/* 버튼 1개 버전 */
 import { MdOutlineReplay } from "react-icons/md";
+
+/* 버튼 2개 버전 */
+// import { MdOutlineReplay } from "react-icons/md";
+// import { BsFillForwardFill } from "react-icons/bs";
 
 const GuestResult = () => {
   const navigate = useNavigate();
@@ -22,6 +28,8 @@ const GuestResult = () => {
   const role = localStorage.getItem("role");
   const owner_answer = localStorage.getItem("owner_answer");
   const guest_answer = JSON.parse(localStorage.getItem("guest_answer"));
+
+  const ownerId = localStorage.getItem("id");
 
   // 중복 클릭 방지 (isLoding이 false면 disabled)
   const [isLoading, setIsLoading] = useState(false);
@@ -92,9 +100,20 @@ const GuestResult = () => {
     }
   };
 
-  const goHome = () => {
-    navigate("/");
+  const clear = () => {
+    localStorage.clear();
   };
+
+  const goHome = () => {
+    navigate("/", { replace: true });
+    clear();
+  };
+
+  /* 버튼 2개 버전에서만 사용 */
+  // const goGuest = () => {
+  //   navigate("/guest-login?id=" + ownerId, { replace: true });
+  //   clear();
+  // };
 
   return (
     <div className="GuestResult">
@@ -175,10 +194,29 @@ const GuestResult = () => {
           </button>
         </div>
       </div>
+
+      {/* 버튼 1개 버전 */}
       <div className="button-wrapper" onClick={goHome}>
         <MdOutlineReplay className="try" />
         <p className="text">나도 검사하기!</p>
       </div>
+
+      {/* 버튼 2개 버전 */}
+      {/* <div className="button-wrapper">
+          <div className="text">
+            <div>나도하기</div>
+            <div>끝내기</div>
+          </div>
+
+          <div className="icons">
+            <div>
+              <MdOutlineReplay className="Home" onClick={goHome} />
+            </div>
+            <div>
+              <BsFillForwardFill className="Out" onClick={goGuest} />
+            </div>
+          </div>
+        </div> */}
     </div>
   );
 };
