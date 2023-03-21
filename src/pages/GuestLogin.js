@@ -40,6 +40,7 @@ const GuestLogin = () => {
       },
     }).then((res) => {
       console.log(res.data);
+      localStorage.setItem("id", ownerId);
       localStorage.setItem("name", res.data.kakaoName);
       localStorage.setItem("owner_answer", res.data.result);
       localStorage.setItem("mbti", res.data.mbti);
@@ -70,7 +71,7 @@ const GuestLogin = () => {
           localStorage.setItem("role", state.role);
           console.log(state);
           console.log(res);
-          navigate("/question");
+          navigate("/question", { replace: true });
         }
       })
       .catch((error) => console.log(error.res))
