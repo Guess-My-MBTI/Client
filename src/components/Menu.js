@@ -67,6 +67,29 @@ const Menu = ({ isOpen, setIsOpen }) => {
       alert("취소합니다.");
     }
   };
+
+  const logOut = () => {
+    if (window.confirm("로그아웃하시겠습니까?")) {
+      axios({
+        method: "GET",
+        url: `${baseUrl}owner/logout`,
+        headers: {
+          Authorization: "Bearer " + accessToken,
+          "Content-Type": "application/json;charset=utf-8",
+          "Access-Control-Allow-Origin": "*",
+        },
+        params: {
+          id: ownerId,
+        },
+      }).then((res) => {
+        alert("로그아웃 되었습니다.");
+        localStorage.clear();
+        navigate("/", { replace: true });
+      });
+    } else {
+      alert("취소합니다.");
+    }
+  };
   return (
     <div className="Menu">
       <div className="menu-box">
@@ -98,7 +121,9 @@ const Menu = ({ isOpen, setIsOpen }) => {
           }}
         >
           <MdOutlineKeyboardBackspace className="logout" />
-          <p className="text">로그아웃</p>
+          <p className="text" onClick={logOut}>
+            로그아웃
+          </p>
         </div>
         <div className="m5">
           <AiOutlineClose onClick={menuToggle} />
