@@ -6,10 +6,6 @@ import API from "../utils/API";
 /* 버튼 1개 버전 */
 import { MdOutlineReplay } from "react-icons/md";
 
-/* 버튼 2개 버전 */
-// import { MdOutlineReplay } from "react-icons/md";
-// import { BsFillForwardFill } from "react-icons/bs";
-
 const GuestResult = () => {
   const navigate = useNavigate();
   const messageInput = useRef();
@@ -109,12 +105,6 @@ const GuestResult = () => {
     clear();
   };
 
-  /* 버튼 2개 버전에서만 사용 */
-  // const goGuest = () => {
-  //   navigate("/guest-login?id=" + ownerId, { replace: true });
-  //   clear();
-  // };
-
   return (
     <div className="GuestResult">
       <div className="answer">
@@ -195,28 +185,17 @@ const GuestResult = () => {
         </div>
       </div>
 
-      {/* 버튼 1개 버전 */}
-      <div className="button-wrapper" onClick={goHome}>
-        <MdOutlineReplay className="try" />
-        <p className="text">나도 검사하기!</p>
+      <div className="button-wrapper">
+        <div className="text">
+          <div>나도하기</div>
+        </div>
+
+        <div className="icons">
+          <div>
+            <MdOutlineReplay className="Home" onClick={goHome} />
+          </div>
+        </div>
       </div>
-
-      {/* 버튼 2개 버전 */}
-      {/* <div className="button-wrapper">
-          <div className="text">
-            <div>나도하기</div>
-            <div>끝내기</div>
-          </div>
-
-          <div className="icons">
-            <div>
-              <MdOutlineReplay className="Home" onClick={goHome} />
-            </div>
-            <div>
-              <BsFillForwardFill className="Out" onClick={goGuest} />
-            </div>
-          </div>
-        </div> */}
     </div>
   );
 };

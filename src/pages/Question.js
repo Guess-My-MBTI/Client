@@ -109,9 +109,9 @@ const Question = () => {
 
   const answerHandler = (e) => {
     if (e.target.className == "answer-card-1") {
-      setAnswer(answer.concat(list.map((it) => it.answer1).slice(0, 1)));
+      setAnswer(answer.concat(list.map((it) => it.answer1[0])));
     } else {
-      setAnswer(answer.concat(list.map((it) => it.answer2).slice(0, 1)));
+      setAnswer(answer.concat(list.map((it) => it.answer2[0])));
     }
   };
 
@@ -163,7 +163,9 @@ const Question = () => {
             value="answer1"
             onClick={answerHandler}
           >
-            <p className="ans-text-1">{list.map((it) => it.answer1)}</p>
+            <p className="ans-text-1">
+              {list.map((it) => it.answer1.slice(1))}
+            </p>
           </div>
         </div>
 
@@ -173,7 +175,9 @@ const Question = () => {
             value="answer2"
             onClick={answerHandler}
           >
-            <p className="ans-text-2">{list.map((it) => it.answer2)}</p>
+            <p className="ans-text-2">
+              {list.map((it) => it.answer2.slice(1))}
+            </p>
           </div>
         </div>
       </div>
