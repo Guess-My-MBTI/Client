@@ -278,7 +278,7 @@ body {
 }
 
 .OwnerResult .mbti-description {
-  font-size: 30px;
+  font-size: 20px;
   color: rgba(192, 216, 203, 1);
 
   letter-spacing: 0.09em;
@@ -301,9 +301,12 @@ body {
 
 .OwnerResult .des {
   padding-top: 10px;
-  padding-left: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
   color: rgba(102, 102, 102, 1);
-  font-size: 20px;
+  font-size: 13px;
+  line-height: 23px;
+  letter-spacing: 0.1em;
 }
 
 .OwnerResult .button-wrapper {

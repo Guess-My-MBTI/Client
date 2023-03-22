@@ -49,9 +49,9 @@ const OwnerQuestion = () => {
   //버튼 누를시 작동
   const answerHandeler = (e) => {
     if (e.target.className === "answer-card-1") {
-      setAnswer(answer.concat(list?.map((it) => it.answer1).slice(0, 1)));
+      setAnswer(answer.concat(list?.map((it) => it.answer1.slice(0, 1))));
     } else {
-      setAnswer(answer.concat(list?.map((it) => it.answer2).slice(0, 1)));
+      setAnswer(answer.concat(list?.map((it) => it.answer2.slice(0, 1))));
     }
   };
 
@@ -161,7 +161,7 @@ const OwnerQuestion = () => {
           <div className="answer-card-1" onClick={answerHandeler}>
             <p className="ans-text-1">
               {/* 전체 데이터 들어오면 slice(1)로 바꿔야함 */}
-              {list.map((it) => it.answer1.slice(0, 1))}
+              {list.map((it) => it.answer1.slice(1))}
             </p>
           </div>
         </div>
@@ -169,7 +169,7 @@ const OwnerQuestion = () => {
         <div className="answer-card-2">
           <div className="answer-card-2" onClick={answerHandeler}>
             <p className="ans-text-2">
-              {list.map((it) => it.answer2.slice(0, 1))}
+              {list.map((it) => it.answer2.slice(1))}
             </p>
           </div>
         </div>
