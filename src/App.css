@@ -1119,8 +1119,6 @@ body {
 }
 
 .Question .ans-text-1 {
-  justify-content: start;
-  align-items: start;
   padding-top: 20px;
   padding-left: 10px;
   padding-right: 10px;
