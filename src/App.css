@@ -1118,12 +1118,23 @@ body {
   opacity: 0.8;
 }
 
-.Question .ans-text-1,
-.ans-text-2 {
-  margin-left: 15px;
+.Question .ans-text-1 {
+  justify-content: start;
+  align-items: start;
+  padding-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
   top: 50%;
   left: 0%;
-  transform: translate(0%, 70%);
+  font-size: 15px;
+}
+
+.Question .ans-text-2 {
+  padding-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  top: 50%;
+  left: 0%;
   font-size: 15px;
 }
 
