@@ -10,7 +10,7 @@ const OwnerLogin = () => {
       <div className="banner">
         <p className="me">
           <img
-            src={process.env.PUBLIC_URL + `assets/pencil1.png`}
+            src={process.env.PUBLIC_URL + `assets/Pencil1.png`}
             className="pencil1"
           />
           나의
@@ -18,7 +18,7 @@ const OwnerLogin = () => {
 
         <div className="mbti">
           <img
-            src={process.env.PUBLIC_URL + `assets/pencil2.png`}
+            src={process.env.PUBLIC_URL + `assets/Pencil2.png`}
             className="pencil2"
           />
           <p className="m">M</p>
