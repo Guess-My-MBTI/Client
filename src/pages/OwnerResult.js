@@ -67,6 +67,31 @@ const OwnerResult = () => {
       navigate("/owner-main");
     }
   };
+
+  const reExam = () => {
+    if (
+      window.confirm(
+        "다시 검사할 시 이전의 데이터들이 모두 지워집니다. 다시 검사하시겠습니까?"
+      )
+    ) {
+      axios({
+        method: "DELETE",
+        url: `${baseUrl}${ownerId}`,
+        headers: {
+          Authorization: "Bearer " + accessToken,
+          "Content-Type": "application/json;charset=utf-8",
+          "Access-Control-Allow-Origin": "*",
+        },
+      }).then((res) => {
+        alert("기존의 데이터들이 삭제되었습니다.");
+        localStorage.setItem("mbti", "");
+        navigate("/owner-question", { replace: true });
+      });
+    } else {
+      alert("취소합니다.");
+    }
+  };
+
   return (
     <div className="OwnerResult">
       <div className="result">
@@ -94,7 +119,7 @@ const OwnerResult = () => {
         </div>
         <div className="icons">
           <div>
-            <MdOutlineReplay className="return" />
+            <MdOutlineReplay className="return" onClick={reExam} />
           </div>
           <div>
             <AiFillHome className="home" onClick={goHome} />
