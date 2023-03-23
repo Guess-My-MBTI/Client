@@ -23,15 +23,15 @@ const OwnerQuestion = () => {
         // 요청을 할 때
         Authorization: "Bearer " + accessToken,
       },
-    }).then((res) => {
-      console.log(res.data.data);
-      setData(res.data.data);
-    });
+    })
+      .then((res) => {
+        setData(res.data.data);
+      })
+      .catch((error) => console.log(error.res));
   }, []);
 
   //answer이 변화할때만 id에 변화를줘야함
   useEffect(() => {
-    console.log(answer);
     if (id == 20) {
       calcMbti(answer);
     }
@@ -73,10 +73,6 @@ const OwnerQuestion = () => {
     const NS = answer.slice(5, 10);
     const FT = answer.slice(10, 15);
     const PJ = answer.slice(15, 20);
-    console.log(EI);
-    console.log(NS);
-    console.log(FT);
-    console.log(PJ);
 
     const countE = EI.filter((e) => "E" === e).length;
     const countI = EI.filter((e) => "I" === e).length;
@@ -93,7 +89,6 @@ const OwnerQuestion = () => {
       (countF > countT ? "F" : "T") +
       (countP > countJ ? "P" : "J");
 
-    console.log(mbti);
     localStorage.setItem("mbti", mbti);
     storeDB(answer, mbti);
   };
@@ -112,9 +107,11 @@ const OwnerQuestion = () => {
         mbti: mbti,
         result: answer.join(""),
       },
-    }).then((res) => {
-      navigate("/owner-result");
-    });
+    })
+      .then((res) => {
+        navigate("/owner-result");
+      })
+      .catch((error) => console.log(error.res));
   };
 
   return (

@@ -14,7 +14,6 @@ const OwnerResult = () => {
   const accessToken = localStorage.getItem("access_token");
   const mbti = localStorage.getItem("mbti");
   const ownerId = localStorage.getItem("id");
-  console.log(accessToken);
 
   useEffect(() => {
     axios({
@@ -23,10 +22,11 @@ const OwnerResult = () => {
       headers: {
         Authorization: "Bearer " + accessToken,
       },
-    }).then((res) => {
-      console.log(res.data.data);
-      setData(res.data.data);
-    });
+    })
+      .then((res) => {
+        setData(res.data.data);
+      })
+      .catch((error) => console.log(error.res));
   }, []);
 
   const list = data.filter((it) => it.mbti == mbti);
@@ -43,11 +43,11 @@ const OwnerResult = () => {
       params: {
         id: ownerId,
       },
-    }).then((res) => {
-      console.log(res.data);
-
-      copyLink(res.data);
-    });
+    })
+      .then((res) => {
+        copyLink(res.data);
+      })
+      .catch((error) => console.log(error.res));
   };
 
   const copyLink = async (link) => {

@@ -39,7 +39,6 @@ const GuestLogin = () => {
         id: ownerId,
       },
     }).then((res) => {
-      console.log(res.data);
       localStorage.setItem("id", ownerId);
       localStorage.setItem("name", res.data.kakaoName);
       localStorage.setItem("owner_answer", res.data.result);
@@ -58,7 +57,7 @@ const GuestLogin = () => {
   // todo : url 파라미터에서 id 값을 빼와서 post 요청할 때 ownerId를 포함해서 수행하도록 했습니다.
   // todo : 추가적으로 로그인 할 때 조금 느린 경향이 있어서 수빈이처럼 handler를 만들어서 딜레이 주는 것도 좋아보입니당
 
-  console.log(ownerId);
+
   const handleLogin = () => {
     setIsLoading(true);
     API.post("/guest-login/?id=" + ownerId, {
@@ -69,8 +68,6 @@ const GuestLogin = () => {
         if (res.status === 200) {
           localStorage.setItem("nickname", state.nickName);
           localStorage.setItem("role", state.role);
-          console.log(state);
-          console.log(res);
           navigate("/question", { replace: true });
         }
       })

@@ -48,10 +48,9 @@ const GuestResult = () => {
     accuracy: accuracy,
     comment: "",
   });
-  console.log(state);
+
   const handleSend = () => {
     setIsLoading(true);
-    console.log("시작");
     API.post("/guest-result", {
       nickname: nickname,
       result: state.result,
@@ -63,7 +62,6 @@ const GuestResult = () => {
     })
       .then((res) => {
         if (res.status === 200) {
-          console.log(res);
           alert("전달 완료!");
           setState({ comment: "" });
         }

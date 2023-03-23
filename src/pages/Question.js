@@ -35,7 +35,6 @@ const Question = () => {
       },
     })
       .then((res) => {
-        console.log(res.data);
         setGuestId(res.data.id);
         localStorage.setItem("guest_id", res.data.id);
       })
@@ -53,13 +52,11 @@ const Question = () => {
         Authorization: "Bearer " + accessToken,
       },
     }).then((res) => {
-      console.log(res.data.data);
       setData(res.data.data);
     });
   }, []);
 
   useEffect(() => {
-    console.log(answer);
     if (id == 20) {
       calMbti(answer);
     }
@@ -91,8 +88,7 @@ const Question = () => {
       (countN > countS ? "N" : "S") +
       (countF > countT ? "F" : "T") +
       (countP > countJ ? "P" : "J");
-
-    console.log(guest_mbti);
+      
     localStorage.setItem("guest_mbti", guest_mbti);
     navigate("/guest-result", { replace: true });
   };

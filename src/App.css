@@ -1169,6 +1169,7 @@ body {
   align-items: center;
   margin: 0;
   margin-left: -10px;
+  letter-spacing: 0.09em;
 }
 
 @media (max-width: 350px) {
@@ -1424,6 +1425,7 @@ body {
   padding: 17px;
   color: #282828;
   font-size: 13px;
+  width: 60vw;
 }
 
 .GuestResult input ::placeholder {

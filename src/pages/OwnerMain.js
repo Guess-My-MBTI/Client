@@ -41,14 +41,15 @@ const OwnerMain = () => {
         id: ownerId,
       },
     }).then((res) => {
-      console.log(res);
-      const _createData = res.data.guests.map((it) => ({
-        id: it.id,
-        nickname: it.nickname,
-        result: it.result,
-        accuracy: it.accuracy,
-        comment: it.comment,
-      }));
+      const _createData = res.data.guests
+        .map((it) => ({
+          id: it.id,
+          nickname: it.nickname,
+          result: it.result,
+          accuracy: it.accuracy,
+          comment: it.comment,
+        }))
+        .catch((error) => console.log(error.res));
 
       setCreateData(createData.concat(_createData));
     });
@@ -66,11 +67,11 @@ const OwnerMain = () => {
       params: {
         id: ownerId,
       },
-    }).then((res) => {
-      console.log(res.data);
-
-      copyLink(res.data);
-    });
+    })
+      .then((res) => {
+        copyLink(res.data);
+      })
+      .catch((error) => console.log(error.res));
   };
 
   const copyLink = async (link) => {
