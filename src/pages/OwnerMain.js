@@ -40,19 +40,19 @@ const OwnerMain = () => {
       params: {
         id: ownerId,
       },
-    }).then((res) => {
-      const _createData = res.data.guests
-        .map((it) => ({
+    })
+      .then((res) => {
+        const _createData = res.data.guests.map((it) => ({
           id: it.id,
           nickname: it.nickname,
           result: it.result,
           accuracy: it.accuracy,
           comment: it.comment,
-        }))
-        .catch((error) => console.log(error.res));
+        }));
 
-      setCreateData(createData.concat(_createData));
-    });
+        setCreateData(createData.concat(_createData));
+      })
+      .catch((error) => console.log(error.res));
   }, []);
 
   const shareLink = () => {
