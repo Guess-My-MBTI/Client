@@ -1,16 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
+import UrlAPI from "../utils/UrlAPI";
 
 const LoginHandeler = (props) => {
   const navigate = useNavigate();
   const code = new URL(window.location.href).searchParams.get("code");
-
+  const baseURL = UrlAPI;
   useEffect(() => {
     const kakaoLogin = async () => {
       await axios({
         method: "GET",
-        url: `${process.env.REACT_APP_REDIRECT_URL}/?code=${code}`,
+        url: `${baseURL}?code=${code}`,
         headers: {
           "Content-Type": "application/json;charset=utf-8",
           "Access-Control-Allow-Origin": "*",
