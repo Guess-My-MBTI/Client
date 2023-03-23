@@ -1418,14 +1418,16 @@ body {
 }
 
 .GuestResult input {
+  border-radius: 30px;
   border: none;
   background-color: #e6e6e6;
   font-family: "UhBeeSe_hyun";
   position: relative;
   padding: 17px;
+  padding-left: 0px;
+  padding-right: 0px;
   color: #282828;
   font-size: 13px;
-  width: 60vw;
 }
 
 .GuestResult input ::placeholder {
