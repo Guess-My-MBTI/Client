@@ -10,7 +10,7 @@ const LoginHandeler = (props) => {
     const kakaoLogin = async () => {
       await axios({
         method: "GET",
-        url: `${process.env.REACT_APP_REDIRECT_URL}/?code=${code}`,
+        url: `https://gmmserver.click/login/oauth2/callback/kakao?code=${code}`,
         headers: {
           "Content-Type": "application/json;charset=utf-8",
           "Access-Control-Allow-Origin": "*",

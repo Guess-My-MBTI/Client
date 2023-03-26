@@ -88,7 +88,7 @@ const Question = () => {
       (countN > countS ? "N" : "S") +
       (countF > countT ? "F" : "T") +
       (countP > countJ ? "P" : "J");
-      
+
     localStorage.setItem("guest_mbti", guest_mbti);
     navigate("/guest-result", { replace: true });
   };
