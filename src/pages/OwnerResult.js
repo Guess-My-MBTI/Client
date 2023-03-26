@@ -52,10 +52,31 @@ const OwnerResult = () => {
 
   const copyLink = async (link) => {
     try {
-      await navigator.clipboard.writeText(link);
-      alert("클립보드에 링크가 복사되었습니다.");
+      if (
+        /iPad|iPhone|iPod/.test(navigator.userAgent) &&
+        /Safari/.test(navigator.userAgent)
+      ) {
+        const el = document.createElement("textarea");
+        el.value = link;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand("copy");
+        document.body.removeChild(el);
+
+        alert("클립보드에 링크가 복사되었습니다.");
+      } else if (/Android/.test(navigator.userAgent)) {
+        if (navigator.clipboard) {
+          await navigator.clipboard.writeText(link);
+          alert("클립보드에 링크가 복사되었습니다.");
+        } else {
+          throw new Error();
+        }
+      } else {
+        await navigator.clipboard.writeText(link);
+        alert("클립보드에 링크가 복사되었습니다.");
+      }
     } catch (e) {
-      alert("실패 다시시도해주세요");
+      alert("실패하였습니다.");
     }
   };
 
