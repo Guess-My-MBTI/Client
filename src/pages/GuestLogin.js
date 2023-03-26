@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import ListName from "../components/ListName";
 import API from "../utils/API";
 import UrlAPI from "../utils/UrlAPI";
-import OwnerMain from "./OwnerMain";
+import { BsQuestion } from "react-icons/bs";
 
 const GuestLogin = () => {
   const navigate = useNavigate();
@@ -56,7 +56,6 @@ const GuestLogin = () => {
 
   // todo : url 파라미터에서 id 값을 빼와서 post 요청할 때 ownerId를 포함해서 수행하도록 했습니다.
   // todo : 추가적으로 로그인 할 때 조금 느린 경향이 있어서 수빈이처럼 handler를 만들어서 딜레이 주는 것도 좋아보입니당
-
 
   const handleLogin = () => {
     setIsLoading(true);
@@ -113,6 +112,14 @@ const GuestLogin = () => {
         </div>
 
         <p className="guess">맞춰봐</p>
+      </div>
+      <div className="infowrapper">
+        <BsQuestion
+          className="info"
+          onClick={() => {
+            navigate("/notice");
+          }}
+        />
       </div>
 
       {isLoading == true ? (

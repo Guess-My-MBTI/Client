@@ -606,6 +606,7 @@ body {
   position: absolute;
   z-index: 2;
   background: rgba(230, 230, 230, 1);
+  border: solid 1px black;
   border-radius: 30px;
   top: 50%;
   left: 50%;
@@ -636,33 +637,119 @@ body {
   align-items: center;
 }
 .ShareLink .s1 {
-  top: 40%;
+  top: 50%;
 }
 
 .ShareLink .s2 {
-  top: 60%;
-  cursor: pointer;
+  top: 85%;
 }
 
 .ShareLink .notice {
   color: rgba(192, 216, 203, 1);
   text-shadow: -1px 0 rgba(102, 102, 102, 1), 0 1px rgba(102, 102, 102, 1),
     1px 0 rgba(102, 102, 102, 1), 0 -1px rgba(102, 102, 102, 1);
-  font-size: 20px;
+  font-size: 16px;
 }
 .ShareLink .link {
+  text-align: start;
+  font-size: 18px;
+  background-color: rgba(255, 255, 255, 0.62);
+  border-radius: 10px;
   padding-top: 10px;
   color: black;
 }
 
 .ShareLink .closetext {
-  padding-top: 10px;
+  margin: 0px;
+  padding-left: 120px;
   color: white;
   font-size: 20px;
   text-shadow: -1px 0 rgba(102, 102, 102, 1), 0 1px rgba(102, 102, 102, 1),
     1px 0 rgba(102, 102, 102, 1), 0 -1px rgba(102, 102, 102, 1);
-  padding-left: 80px;
-  padding-top: 90px;
+  cursor: pointer;
+}
+
+/* Notice */
+
+.Notice {
+  display: grid;
+}
+.Notice .top {
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  margin-left: 20px;
+  text-shadow: -1px 0 rgb(0, 0, 0), 0 1px rgb(0, 0, 0), 1px 0 rgb(0, 0, 0),
+    0 -1px rgb(0, 0, 0);
+  color: white;
+}
+
+.Notice .banner {
+  flex-grow: 10;
+  letter-spacing: 0.09em;
+  color: rgba(192, 216, 203, 1);
+}
+.Notice .space {
+  flex-grow: 80;
+}
+
+.Notice .xbtn {
+  margin: 0px;
+  font-size: 60px;
+  flex-grow: 10;
+  text-align: center;
+  color: white;
+  color: rgba(249, 153, 160, 1);
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.Notice hr {
+  background-color: rgb(249, 231, 166);
+  border: 0px;
+  width: 100%;
+  height: 2px;
+}
+
+.Notice .ownertext,
+.guesttext {
+  font-size: 25px;
+  margin: 0px;
+  color: white;
+  text-shadow: -1px 0 rgba(102, 102, 102, 1), 0 1px rgba(102, 102, 102, 1),
+    1px 0 rgba(102, 102, 102, 1), 0 -1px rgba(102, 102, 102, 1);
+  letter-spacing: 0.09em;
+  padding-bottom: 20px;
+}
+.Notice .ownerwrapper,
+.guestwrapper {
+  display: grid;
+}
+.Notice .imgwrapper {
+  display: flex;
+  padding-bottom: 20px;
+}
+.Notice .ownerimg,
+.guestimg {
+  width: 300px;
+}
+
+@media (max-width: 650px) {
+  .Notice .ownerimg,
+  .guestimg {
+    width: 45vw;
+  }
+}
+
+.Notice .bottom {
+  color: white;
+  text-shadow: -1px 0 rgba(102, 102, 102, 1), 0 1px rgba(102, 102, 102, 1),
+    1px 0 rgba(102, 102, 102, 1), 0 -1px rgba(102, 102, 102, 1);
+  font-size: 13px;
+}
+
+.Notice a {
+  color: rgba(191, 205, 216, 1);
 }
 /* --------------------------------수빈 css-------------------------------- */
 /* ####################################################################### */
@@ -684,6 +771,51 @@ body {
 
 .GuestLogin {
   display: grid;
+}
+
+.GuestLogin .infowrapper {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+}
+.GuestLogin .info {
+  margin-top: 70px;
+  color: white;
+  background-color: rgb(255, 174, 140);
+  font-size: 30px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transform: rotate(15deg);
+  border-radius: 50%;
+  cursor: pointer;
+  animation: vibration 2s infinite ease-in-out;
+}
+
+@keyframes vibration {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(45deg);
+  }
+  25% {
+    transform: rotate(-45deg);
+  }
+  40% {
+    transform: rotate(10deg);
+  }
+  55% {
+    transform: rotate(-10deg);
+  }
+  70% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.GuestLogin .info:hover {
+  background-color: rgb(255, 83, 83);
 }
 
 @keyframes spinner {

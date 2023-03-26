@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BsFillPersonFill } from "react-icons/bs";
 import { HiOutlineLink } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
@@ -5,9 +6,11 @@ import { MdOutlineReplay, MdOutlineKeyboardBackspace } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import UrlAPI from "../utils/UrlAPI";
+import ShareLink from "./ShareLink";
 const Menu = ({ isOpen, setIsOpen }) => {
   const navigate = useNavigate();
-
+  const [link, setLink] = useState("");
+  const [isShare, setIsShare] = useState(false);
   const baseUrl = UrlAPI;
 
   const accessToken = localStorage.getItem("access_token");
@@ -30,46 +33,16 @@ const Menu = ({ isOpen, setIsOpen }) => {
         id: ownerId,
       },
     }).then((res) => {
-      console.log(res.data);
+      setLink(res.data);
 
-      copyLink(res.data);
+      setIsShare(!isShare);
     });
-  };
-
-  const copyLink = async (link) => {
-    try {
-      if (
-        /iPad|iPhone|iPod/.test(navigator.userAgent) &&
-        /Safari/.test(navigator.userAgent)
-      ) {
-        const el = document.createElement("textarea");
-        el.value = link;
-        document.body.appendChild(el);
-        el.select();
-        document.execCommand("copy");
-        document.body.removeChild(el);
-
-        alert("클립보드에 링크가 복사되었습니다.");
-      } else if (/Android/.test(navigator.userAgent)) {
-        if (navigator.clipboard) {
-          await navigator.clipboard.writeText(link);
-          alert("클립보드에 링크가 복사되었습니다.");
-        } else {
-          throw new Error();
-        }
-      } else {
-        await navigator.clipboard.writeText(link);
-        alert("클립보드에 링크가 복사되었습니다.");
-      }
-    } catch (e) {
-      alert("복사에 실패하였습니다.");
-    }
   };
 
   const reExam = () => {
     if (
       window.confirm(
-        "다시 검사할 시 이전의 데이터들이 모두 지워집니다. 다시 검사하시겠습니까?"
+        "다시 검사할 시 이전의 데이터들이 모두 지워집니다. 다시 검사하시겠습니까? (5초 정도 소요됩니다)"
       )
     ) {
       axios({
@@ -139,6 +112,15 @@ const Menu = ({ isOpen, setIsOpen }) => {
         <div className="m5">
           <AiOutlineClose onClick={menuToggle} />
         </div>
+      </div>
+      <div>
+        {isShare ? (
+          <>
+            <ShareLink link={link} isShare={isShare} setIsShare={setIsShare} />
+          </>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

@@ -3,12 +3,14 @@ import { useEffect, useState } from "react";
 import { AiFillHome } from "react-icons/ai";
 import { HiOutlineLink } from "react-icons/hi";
 import { MdOutlineReplay } from "react-icons/md";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import UrlAPI from "../utils/UrlAPI";
-
+import ShareLink from "../components/ShareLink";
 const OwnerResult = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
+  const [link, setLink] = useState("");
+  const [isShare, setIsShare] = useState(false);
   const baseUrl = UrlAPI;
 
   const accessToken = localStorage.getItem("access_token");
@@ -45,39 +47,10 @@ const OwnerResult = () => {
       },
     })
       .then((res) => {
-        copyLink(res.data);
+        setLink(res.data);
+        setIsShare(!isShare);
       })
       .catch((error) => console.log(error.res));
-  };
-
-  const copyLink = async (link) => {
-    try {
-      if (
-        /iPad|iPhone|iPod/.test(navigator.userAgent) &&
-        /Safari/.test(navigator.userAgent)
-      ) {
-        const el = document.createElement("textarea");
-        el.value = link;
-        document.body.appendChild(el);
-        el.select();
-        document.execCommand("copy");
-        document.body.removeChild(el);
-
-        alert("클립보드에 링크가 복사되었습니다.");
-      } else if (/Android/.test(navigator.userAgent)) {
-        if (navigator.clipboard) {
-          await navigator.clipboard.writeText(link);
-          alert("클립보드에 링크가 복사되었습니다.");
-        } else {
-          throw new Error();
-        }
-      } else {
-        await navigator.clipboard.writeText(link);
-        alert("클립보드에 링크가 복사되었습니다.");
-      }
-    } catch (e) {
-      alert("실패하였습니다.");
-    }
   };
 
   const goHome = () => {
@@ -149,6 +122,15 @@ const OwnerResult = () => {
             <HiOutlineLink className="share" onClick={shareLink} />
           </div>
         </div>
+      </div>
+      <div>
+        {isShare ? (
+          <>
+            <ShareLink link={link} isShare={isShare} setIsShare={setIsShare} />
+          </>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );
