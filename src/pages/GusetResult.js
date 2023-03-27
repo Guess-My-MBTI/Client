@@ -2,8 +2,6 @@ import { useNavigate } from "react-router-dom";
 import React, { useRef, useState, useEffect } from "react";
 import ListName from "../components/ListName";
 import API from "../utils/API";
-
-/* 버튼 1개 버전 */
 import { MdOutlineReplay } from "react-icons/md";
 
 const GuestResult = () => {
@@ -24,8 +22,6 @@ const GuestResult = () => {
   const role = localStorage.getItem("role");
   const owner_answer = localStorage.getItem("owner_answer");
   const guest_answer = JSON.parse(localStorage.getItem("guest_answer"));
-
-  const ownerId = localStorage.getItem("id");
 
   // 중복 클릭 방지 (isLoding이 false면 disabled)
   const [isLoading, setIsLoading] = useState(false);
@@ -49,12 +45,23 @@ const GuestResult = () => {
     comment: "",
   });
 
+  useEffect(() => {
+    API.post("/guest-result", {
+      nickname: nickname,
+      result: state.result,
+      accuracy: state.accuracy,
+      guestId: guestId,
+      role: role,
+    })
+      .then((res) => {})
+      .catch((error) => alert(error.res));
+  }, []);
+
   const handleSend = () => {
     setIsLoading(true);
     API.post("/guest-result", {
       nickname: nickname,
       result: state.result,
-      // todo : accuracy가 항상 0 값입니다. 수정해야 할 것 같아요
       accuracy: state.accuracy,
       comment: state.comment,
       guestId: guestId,
