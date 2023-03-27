@@ -100,8 +100,8 @@ const Notice = () => {
         </div>
         <div className="guestwrapper">
           <p className="des">
-            3. 그럼 친구의 MBTI와 내가 생각한 친구의 MBTI가 짜잔!! 꼭 하고 싶은
-            한마디를 적어줘야 친구의 보관함으로 나의 결과가 이동해요!!
+            3. 그럼 친구의 MBTI와 내가 생각한 친구의 MBTI가 짜잔!! 하고 싶은
+            한마디도 적어볼까요? 이결과는 친구의 보관함으로 이동합니다!!
           </p>
           <div className="imgwrapper">
             <img
