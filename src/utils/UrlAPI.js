@@ -1,1 +1,1 @@
-export default "https://gmmserver.click/";
+export default "http://localhost:8080/";
