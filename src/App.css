@@ -1621,10 +1621,17 @@ body {
   font-family: "UhBeeSe_hyun";
   position: relative;
   padding: 17px;
-  padding-left: 0px;
-  padding-right: 0px;
+  padding-left: 50px;
+  padding-right: 50px;
   color: #282828;
   font-size: 13px;
+}
+
+@media (max-width: 300px) {
+  .GuestResult input {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 }
 
 .GuestResult input ::placeholder {
@@ -1638,12 +1645,12 @@ body {
   margin-bottom: 20px;
   background-color: #e6e6e6;
   border-radius: 30px;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-bottom: 5px;
-  padding-top: 5px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 15px;
+  padding-top: 15px;
   font-family: "UhBeeSe_hyun";
-  font-size: 10px;
+  font-size: 13px;
   cursor: pointer;
 }
 
