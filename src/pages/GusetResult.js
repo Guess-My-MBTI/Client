@@ -49,16 +49,26 @@ const GuestResult = () => {
     comment: "",
   });
 
-  const handleSend = () => {
-    setIsLoading(true);
+  useEffect(() => {
     API.post("/guest-result", {
       nickname: nickname,
       result: state.result,
-      // todo : accuracy가 항상 0 값입니다. 수정해야 할 것 같아요
       accuracy: state.accuracy,
-      comment: state.comment,
       guestId: guestId,
       role: role,
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          console.log("success");
+        }
+      })
+      .catch((error) => console.log(error.res));
+  }, []);
+
+  const handleSend = () => {
+    setIsLoading(true);
+    API.post("/guest-result", {
+      comment: state.comment,
     })
       .then((res) => {
         if (res.status === 200) {
