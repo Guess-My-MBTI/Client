@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: "https://gmmserver.click",
   headers: {
     "Content-Type": "application/json;charset=utf-8",
     "Access-Control-Allow-Origin": "*",
