@@ -1054,6 +1054,7 @@ body {
 
 .GuestLogin button {
   margin-top: 55px;
+  margin-bottom: 55px;
   background-color: #e6e6e6;
   border-radius: 30px;
   height: 35px;
@@ -1647,10 +1648,10 @@ body {
   border-radius: 30px;
   padding-left: 50px;
   padding-right: 50px;
-  padding-bottom: 15px;
-  padding-top: 15px;
+  padding-bottom: 10px;
+  padding-top: 10px;
   font-family: "UhBeeSe_hyun";
-  font-size: 13px;
+  font-size: 17px;
   cursor: pointer;
 }
 
