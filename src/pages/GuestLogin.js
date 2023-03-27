@@ -39,6 +39,7 @@ const GuestLogin = () => {
         id: ownerId,
       },
     }).then((res) => {
+      localStorage.clear();
       localStorage.setItem("id", ownerId);
       localStorage.setItem("name", res.data.kakaoName);
       localStorage.setItem("owner_answer", res.data.result);

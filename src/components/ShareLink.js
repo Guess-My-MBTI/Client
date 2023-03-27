@@ -1,5 +1,4 @@
 const ShareLink = ({ link, isShare, setIsShare }) => {
-  console.log(link);
   const shareToggle = () => {
     setIsShare(!isShare);
   };
