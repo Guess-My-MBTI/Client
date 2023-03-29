@@ -68,10 +68,11 @@ const GuestLogin = () => {
         if (res.status === 200) {
           localStorage.setItem("nickname", state.nickName);
           localStorage.setItem("role", state.role);
+          localStorage.setItem("guest_id", res.data.id);
           navigate("/question", { replace: true });
         }
       })
-      .catch((error) => console.log(error.res))
+      .catch((error) => alert(error.res))
       .finally(() => setIsLoading(false));
   };
 
