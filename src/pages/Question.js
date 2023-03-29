@@ -23,25 +23,6 @@ const Question = () => {
   const nameData = [
     { ownerName: name.length >= 3 ? name.slice(-2) : name, id: 1 },
   ];
-  // 닉네임 포함해서 보내기
-  // token 필요없음
-  useEffect(() => {
-    axios({
-      method: "GET",
-      url: `${baseUrl}guest-info`,
-      params: { nickname: nickname },
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-    })
-      .then((res) => {
-        setGuestId(res.data.id);
-        localStorage.setItem("guest_id", res.data.id);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
 
   useEffect(() => {
     axios({
@@ -112,6 +93,23 @@ const Question = () => {
   };
 
   localStorage.setItem("guest_answer", JSON.stringify(answer));
+
+  const calAcc = () => {
+    const owner_answer = localStorage.getItem("owner_answer");
+    const guest_answer = JSON.parse(localStorage.getItem("guest_answer"));
+
+    let count = 0;
+    for (let i = 0; i < owner_answer.length; i++) {
+      if (owner_answer[i] == guest_answer[i]) {
+        count += 5;
+      } else {
+        continue;
+      }
+    }
+    return count;
+  };
+
+  localStorage.setItem("accuracy", calAcc());
 
   return (
     <div className="Question">
