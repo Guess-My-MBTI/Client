@@ -20,25 +20,12 @@ const GuestResult = () => {
   const nickname = localStorage.getItem("nickname");
   const guestId = localStorage.getItem("guest_id");
   const role = localStorage.getItem("role");
-  const owner_answer = localStorage.getItem("owner_answer");
-  const guest_answer = JSON.parse(localStorage.getItem("guest_answer"));
 
   // 중복 클릭 방지 (isLoding이 false면 disabled)
   const [isLoading, setIsLoading] = useState(false);
 
-  const calAcc = () => {
-    let count = 0;
-    for (let i = 0; i < owner_answer.length; i++) {
-      if (owner_answer[i] == guest_answer[i]) {
-        count += 5;
-      } else {
-        continue;
-      }
-    }
-    return count;
-  };
+  const accuracy = localStorage.getItem("accuracy");
 
-  const accuracy = calAcc();
   const [state, setState] = useState({
     result: result,
     accuracy: accuracy,
@@ -47,28 +34,31 @@ const GuestResult = () => {
 
   useEffect(() => {
     API.post("/guest-result", {
+      guestId: guestId,
       nickname: nickname,
+      role: role,
       result: state.result,
       accuracy: state.accuracy,
-      guestId: guestId,
-      role: role,
     })
-      .then((res) => {})
-      .catch((error) => alert(error.res));
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => console.log(error));
   }, []);
 
   const handleSend = () => {
     setIsLoading(true);
     API.post("/guest-result", {
+      guestId: guestId,
       nickname: nickname,
+      role: role,
       result: state.result,
       accuracy: state.accuracy,
       comment: state.comment,
-      guestId: guestId,
-      role: role,
     })
       .then((res) => {
         if (res.status === 200) {
+          console.log(res.data);
           alert("전달 완료!");
           setState({ comment: "" });
         }

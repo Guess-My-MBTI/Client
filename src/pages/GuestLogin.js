@@ -45,6 +45,8 @@ const GuestLogin = () => {
       localStorage.setItem("owner_answer", res.data.result);
       localStorage.setItem("mbti", res.data.mbti);
       setOwnerName(res.data.kakaoName);
+
+      console.log(res.data);
     });
   }, []);
 
@@ -68,6 +70,8 @@ const GuestLogin = () => {
         if (res.status === 200) {
           localStorage.setItem("nickname", state.nickName);
           localStorage.setItem("role", state.role);
+          localStorage.setItem("guest_id", res.data.id);
+          console.log(res.data);
           navigate("/question", { replace: true });
         }
       })
