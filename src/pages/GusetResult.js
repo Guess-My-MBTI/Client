@@ -20,11 +20,11 @@ const GuestResult = () => {
   const nickname = localStorage.getItem("nickname");
   const guestId = localStorage.getItem("guest_id");
   const role = localStorage.getItem("role");
+  const accuracy = localStorage.getItem("accuracy");
+  const guest_answer = localStorage.getItem("str_answer");
 
   // 중복 클릭 방지 (isLoding이 false면 disabled)
   const [isLoading, setIsLoading] = useState(false);
-
-  const accuracy = localStorage.getItem("accuracy");
 
   const [state, setState] = useState({
     result: result,
@@ -37,11 +37,14 @@ const GuestResult = () => {
       guestId: guestId,
       nickname: nickname,
       role: role,
+      answer: guest_answer,
       result: state.result,
       accuracy: state.accuracy,
     })
       .then((res) => {
         console.log(res.data);
+        // console.log(res.data.answer);
+        // console.log(guest_answer);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -52,6 +55,7 @@ const GuestResult = () => {
       guestId: guestId,
       nickname: nickname,
       role: role,
+      answer: guest_answer,
       result: state.result,
       accuracy: state.accuracy,
       comment: state.comment,

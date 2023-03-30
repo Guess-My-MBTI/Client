@@ -88,7 +88,7 @@ const Question = () => {
       setAnswer(answer.concat(list.map((it) => it.answer2[0])));
     }
   };
-
+  localStorage.setItem("str_answer", answer.join(""));
   localStorage.setItem("guest_answer", JSON.stringify(answer));
 
   const calAcc = () => {
