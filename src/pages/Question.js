@@ -92,6 +92,7 @@ const Question = () => {
     }
   };
 
+  localStorage.setItem("str_answer", answer.join(""));
   localStorage.setItem("guest_answer", JSON.stringify(answer));
 
   const calAcc = () => {

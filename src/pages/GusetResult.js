@@ -20,6 +20,7 @@ const GuestResult = () => {
   const nickname = localStorage.getItem("nickname");
   const guestId = localStorage.getItem("guest_id");
   const role = localStorage.getItem("role");
+  const guest_answer = localStorage.getItem("str_answer");
 
   // 중복 클릭 방지 (isLoding이 false면 disabled)
   const [isLoading, setIsLoading] = useState(false);
@@ -36,6 +37,7 @@ const GuestResult = () => {
       guestId: guestId,
       nickname: nickname,
       role: role,
+      answer: guest_answer,
       result: state.result,
       accuracy: state.accuracy,
     })
@@ -49,6 +51,7 @@ const GuestResult = () => {
       guestId: guestId,
       nickname: nickname,
       role: role,
+      answer: guest_answer,
       result: state.result,
       accuracy: state.accuracy,
       comment: state.comment,
