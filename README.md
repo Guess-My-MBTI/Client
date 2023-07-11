@@ -18,6 +18,6 @@ JAVA/ SPRING BOOT/ REACT/ JAVASCRIPT
 
 https://gmmclients.click
 
-[pic1]: /Users/imsubin/Documents/GitHub/Client/build/assets/owner1.png
-[pic2]: /Users/imsubin/Documents/GitHub/Client/build/assets/owner3.png
-[pic3]: /Users/imsubin/Documents/GitHub/Client/build/assets/owner4.png
+[pic1]: /build/assets/owner1.png
+[pic2]: /build/assets/owner3.png
+[pic3]: /build/assets/owner4.png
