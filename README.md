@@ -12,12 +12,12 @@ FRONT-END : 서아름 / 임수빈
 
 ## 기술 스택
 
-JAVA/ SPRING BOOT/ REACT/ JAVASCRIPT
+JAVA / SPRING BOOT / REACT / JAVASCRIPT
 
 ## 링크🔗
 
 https://gmmclients.click
 
-[pic1]: /build/assets/owner1.png
-[pic2]: /build/assets/owner3.png
-[pic3]: /build/assets/owner4.png
+[pic1]: /public/assets/owner1.png
+[pic2]: /public/assets/owner3.png
+[pic3]: /public/assets/owner4.png
